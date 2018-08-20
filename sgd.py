@@ -36,7 +36,7 @@ args = easydict.EasyDict({
 
 # generate a 2-class classification problem with 400 data points,
 # where each data point is a 2D feature vector
-(X, y) = make_blobs(n_samples=400, n_features=2, centers=2,
+(X, y) = make_blobs(n_samples=800, n_features=2, centers=2,
     cluster_std=2.5, random_state=95)
 
 # insert a column of 1's as the first entry in the feature
@@ -47,7 +47,7 @@ X = np.c_[np.ones((X.shape[0])), X]
  
 # initialize our weight matrix such it has the same number of
 # columns as our input features
-print("[INFO] starting training...")
+# print("[INFO] starting training...")
 W = np.random.uniform(size=(X.shape[1],))
  
 # initialize a list to store the loss value for each epoch
@@ -87,20 +87,45 @@ for epoch in np.arange(0, args["epochs"]):
     # update our loss history list by taking the average loss
     # across all batches
     lossHistory.append(np.average(epochLoss))
+    
+    if epoch%20 == 0:
+        #Y = (-W[0] - (W[1] * X)) / W[2]
+        Y = W[0] - X*(W[2] - W[1])
 
+        if epoch == 0:
+            # plot the original data along with our line of best fit
+            plt.figure()
+            plt.scatter(X[:, 1], X[:, 2], marker="o", c=y)
+            plt.plot(X, Y, "r-")
+            continue
+ 
+        # construct a figure that plots the loss over time
+        fig = plt.figure()
+        # print(epoch)
+        plt.plot(np.arange(0, epoch+1), lossHistory)
+        fig.suptitle("Training Loss: " + str(epoch) + " epochs")
+        plt.xlabel("Epoch #")
+        plt.ylabel("Loss")
+        plt.show()
+    
 # compute the line of best fit by setting the sigmoid function
 # to 0 and solving for X2 in terms of X1
-Y = (-W[0] - (W[1] * X)) / W[2]
- 
-# plot the original data along with our line of best fit
+#Y = (-W[0] - (W[1] * X)) / W[2]
+Y = W[0] - X*(W[2] - W[1])
 plt.figure()
 plt.scatter(X[:, 1], X[:, 2], marker="o", c=y)
 plt.plot(X, Y, "r-")
+
+
+# plot the original data along with our line of best fit
+# plt.figure()
+# plt.scatter(X[:, 1], X[:, 2], marker="o", c=y)
+# plt.plot(X, Y, "r-")
  
 # construct a figure that plots the loss over time
 fig = plt.figure()
 plt.plot(np.arange(0, args["epochs"]), lossHistory)
-fig.suptitle("Training Loss")
+fig.suptitle("Training Loss: 100 epochs")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss")
 plt.show()
