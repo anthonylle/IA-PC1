@@ -1,11 +1,13 @@
-# IA-PC1
+# Inteligencia Artificial - Proyecto Corto 1 
 Técnica de optimización: Stochastic Gradient Descent explicada utilizando Jupyter Notebook
-### Jupyter notebook
+
+### Enlace de GitHub
+Para visitar el repositorio de GitHub de este Notebook, visite este [enlace](https://github.com/anthonylle/IA-PC1)
 
 #### Prerequisitos
   - Tener previamente instalado una versión de Python (3.6 ó 2.7)
   - Tener el administrador de paquetes de Python (pip)
-  - En caso contrario consultar [cómo instalar pip](https://recursospython.com/guias-y-manuales/instalacion-y-utilizacion-de-pip-en-windows-linux-y-os-x/)
+  - En caso contrario, consultar [cómo instalar pip](https://recursospython.com/guias-y-manuales/instalacion-y-utilizacion-de-pip-en-windows-linux-y-os-x/)
 #### Proceso de instalación
 
   - Abrir una terminal en su computadora
@@ -18,7 +20,7 @@ Técnica de optimización: Stochastic Gradient Descent explicada utilizando Jupy
       - python -m pip install --upgrade pip
       - python -m pip install jupyter
 
- ### Ejecutando jupyter notebook
+ ### Ejecutando Jupyter Notebook
  Jupyter notebook permite administrar un proyecto a traves del navegador, para ello se debe realizar lo siguiente:
  1. Abrir una terminal.
  2. Dirigirse al directorio raíz del proyecto Jupyter Notebook.
